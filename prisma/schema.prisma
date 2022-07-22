@@ -1,0 +1,42 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id       Int     @id @default(autoincrement())
+  username String  @unique
+  password String
+  isTommy  Boolean @default(false)
+  Urls     Urls[]
+
+  @@map("users")
+}
+
+model Urls {
+  id     Int        @id @default(autoincrement())
+  type   UploadType
+  urls   String[]
+  userId Int
+  user   User       @relation(fields: [userId], references: [id])
+
+  @@unique([userId, type])
+  @@map("urls")
+}
+
+model Password {
+  generatedPassword String @unique
+}
+
+enum UploadType {
+  STATIC
+  WIREFRAME
+  MOTION_DESIGN
+}

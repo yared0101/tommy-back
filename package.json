@@ -1,0 +1,27 @@
+{
+    "name": "trip",
+    "version": "1.0.0",
+    "description": "tommy backend using node",
+    "main": "index.js",
+    "prisma": {
+        "seed": "node prisma/seed.js"
+    },
+    "scripts": {
+        "start": "node setup.js & nodemon app.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "yared0101",
+    "license": "ISC",
+    "dependencies": {
+        "@prisma/client": "^3.11.1",
+        "bcrypt": "^5.0.1",
+        "body-parser": "^1.19.2",
+        "cors": "^2.8.5",
+        "dotenv": "^16.0.0",
+        "express": "^4.17.3",
+        "firebase-admin": "^11.0.0",
+        "jsonwebtoken": "^8.5.1",
+        "multer": "^1.4.4",
+        "prisma": "^3.11.1"
+    }
+}
