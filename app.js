@@ -59,5 +59,5 @@ if (process.env.NODE_ENV === "development") {
     makeEnvExample();
 }
 module.exports = app.listen(port, () => {
-    console.log(`App listening on port ${port}!`);
+    console.log(`App listening on port ${process.env.PORT || port}!`);
 });
