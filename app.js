@@ -28,6 +28,15 @@ app.use(routes);
  * login(username, password)//not for more than a day
  * authentication needed obviously
  *
+ * 
+    ***********new update****
+        1. since photos are uploaded by user, u should be able to change main user to any other and then website will update
+            .... more updates below here are being able to change main to any user for static only or for motion design u know that kinda stuff
+            .... and if he only re arranges for the others he doesn't have to upload different pictures for each(so there should be urls added that specify no user? for all malet new)
+            hmmm I'm confused tho
+        2. send telegram message when users type something in contact!
+        3. add user(this goes with the first)
+
  *
  * all this changes but for sandbox data(so remove this and add this wont affect the real images, it would just change up for)
  * this is cool but adding images will eat up server space and setting them as default for tommy will include weird things, but this is awesome I think!

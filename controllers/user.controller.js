@@ -14,10 +14,10 @@ class UserController {
      */
     login = async (req, res, next) => {
         if (!req.body.username) {
-            error("username", "username can't be empty", next);
+            return error("username", "username can't be empty", next);
         }
         if (!req.body.password) {
-            error("password", "password can't be empty", next);
+            return error("password", "password can't be empty", next);
         }
         const { username, password } = req.body;
         console.log(await user.findMany());
