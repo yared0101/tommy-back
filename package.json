@@ -8,6 +8,7 @@
     },
     "scripts": {
         "start": "node setup.js & nodemon app.js",
+        "start:prod": "node setup.js & node app.js",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "author": "yared0101",
