@@ -53,12 +53,12 @@ app.use((err, _req, res, _next) => {
     res.status(status).send({ error: myError });
 });
 
-const port = 4000;
+const port = process.env.PORT || 4000;
 const host = "0.0.0.0";
 //create .env.example
 if (process.env.NODE_ENV === "development") {
     makeEnvExample();
 }
 module.exports = app.listen(port, host, () => {
-    console.log(`App listening on port ${process.env.PORT || port}!`);
+    console.log(`App listening on port ${port}!`);
 });
