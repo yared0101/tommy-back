@@ -19,6 +19,7 @@ const authenticate = async (req, res, next) => {
     try {
         payload = verify(accessToken, env.ACCESS_KEY);
     } catch (e) {
+        console.log("invalid token sent");
         error("accessToken", "Invalid or Expired Access Token", next, 401);
         return;
     }

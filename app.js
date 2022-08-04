@@ -50,15 +50,20 @@ app.use((err, _req, res, _next) => {
     let myError = JSON.parse(err.message);
     const status = myError.status;
     delete myError.status;
+    console.log(
+        "about to send error with status ",
+        status,
+        " and error",
+        myError
+    );
     res.status(status).send({ error: myError });
 });
 
 const port = process.env.PORT || 4000;
-const host = "0.0.0.0";
 //create .env.example
 if (process.env.NODE_ENV === "development") {
     makeEnvExample();
 }
-module.exports = app.listen(port, host, () => {
+module.exports = app.listen(port, () => {
     console.log(`App listening on port ${port}!`);
 });
