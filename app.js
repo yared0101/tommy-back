@@ -50,13 +50,7 @@ app.use((err, _req, res, _next) => {
     let myError = JSON.parse(err.message);
     const status = myError.status;
     delete myError.status;
-    console.log(
-        "about to send error with status ",
-        status,
-        " and error",
-        myError
-    );
-    res.status(status).send({ error: myError });
+    return res.status(status).json({ error: myError });
 });
 
 const port = process.env.PORT || 4000;
