@@ -34,7 +34,19 @@ class ImagesController {
             },
         });
         let urlLists = queryUrls?.urls || [];
-        const postedUrls = await uploadFiles(req.files, type);
+        let postedUrls = [];
+        if (type === UploadType.MOTION_DESIGN) {
+            postedUrls = req.body.urls;
+            if (!postedUrls) {
+                return error(
+                    "urls",
+                    "please send urls for motion design",
+                    next
+                );
+            }
+        } else {
+            postedUrls = await uploadFiles(req.files, type);
+        }
         const startIndex =
             index < 0 ? 0 : index > urlLists.length ? urlLists.length : index;
         urlLists.splice(startIndex, 0, ...postedUrls);
@@ -104,7 +116,9 @@ class ImagesController {
             }
         }
         urlLists = urlLists.filter((url) => url);
-        await removeFiles(removedFiles);
+        if (type !== UploadType.MOTION_DESIGN) {
+            await removeFiles(removedFiles);
+        }
         await urls.update({
             where: {
                 id: queryUrls.id,

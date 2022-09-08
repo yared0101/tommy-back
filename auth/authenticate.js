@@ -12,7 +12,7 @@ const { error } = require("../utils");
 const authenticate = async (req, res, next) => {
     if (!req.headers.authorization) {
         // error("accessToken", "access token was not sent", next, 401);
-        return res.status(402).send({
+        return res.status(401).send({
             message: "access token was not sent",
             argument: "accessToken",
         });
@@ -24,7 +24,7 @@ const authenticate = async (req, res, next) => {
     } catch (e) {
         console.log("invalid token sent");
         // error("accessToken", "Invalid or Expired Access Token", next, 401);
-        return res.status(402).send({
+        return res.status(401).send({
             message: "Invalid or Expired Access Token",
             argument: "accessToken",
         });
