@@ -9,7 +9,12 @@
     "scripts": {
         "start": "node setup.js & nodemon app.js",
         "start:prod": "node setup.js & node app.js -p $PORT",
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "migrate:dev": "npx prisma migrate dev",
+        "migrate:prod": "npx prisma migrate deploy",
+        "build": "npm run migrate:prod && npm run generate && npm run seed",
+        "seed": "npx prisma db seed",
+        "generate": "npx prisma generate",
+        "build:dev": "npm run migrate:dev && npm run generate && npm run seed"
     },
     "author": "yared0101",
     "license": "ISC",
